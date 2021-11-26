@@ -63,11 +63,24 @@ class FeedContainer extends React.Component {
     const dateRange = {};
     const lastRecords = repositories[repositories.length - 1];
 
+    console.log(dateJump);
+
+    const date_array = dateJump.split('-');
+    var date_filter = ''
+    var date_count = 1
+
+    if (date_array.length > 1) {
+      date_count = date_array[0]
+      date_filter = date_array[1]
+    } else {
+      date_filter = date_array[0]
+    }
+
     if (lastRecords) {
-      dateRange.start = moment(lastRecords.start).subtract(1, dateJump).startOf('day');
+      dateRange.start = moment(lastRecords.start).subtract(date_count, date_filter).startOf('day');
       dateRange.end = lastRecords.start;
     } else {
-      dateRange.start = moment().subtract(1, dateJump).startOf('day');
+      dateRange.start = moment().subtract(date_count, date_filter).startOf('day');
       dateRange.end = moment().startOf('day');
     }
 

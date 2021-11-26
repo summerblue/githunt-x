@@ -1,3 +1,31 @@
+
+## forked 修改如下：
+
+1. 使用夜间模式；
+2. 增加时间过滤列表；
+3. 每页 100 条信息；
+4. 增加 Last Commit 时间；
+
+## 如何运行
+
+1. 安装依赖：
+
+```
+yarn install
+```
+
+2. 构建代码
+
+```
+yarn build-chrome
+```
+
+会在根目录下生成 build 目录。
+
+3. 使用 Chrome 本地加载扩展，选择 build 目录。
+
+-----
+
 <h1 align="center">
   	<img height="100" src="https://raw.github.com/kamranahmedse/githunt/master/public/img/logo.svg?sanitize=true" alt="Githunt" /> <br> GitHunt
 </h1>

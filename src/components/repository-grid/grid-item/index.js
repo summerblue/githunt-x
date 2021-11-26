@@ -37,7 +37,9 @@ class GridItem extends React.Component {
               </a>
             </h5>
             <p className="repo-meta text-muted small">
-              Built by &middot; <a target="_blank" rel="noopener noreferrer" href={ this.props.repository.owner.html_url }>{ this.props.repository.owner.login }</a> &middot; { moment(this.props.repository.created_at).format('MMMM D, YYYY') }
+              Built by &middot; <a target="_blank" rel="noopener noreferrer" href={ this.props.repository.owner.html_url }>{ this.props.repository.owner.login }</a> 
+              &middot; { moment(this.props.repository.created_at).format('MMMM D, YYYY') }
+              &middot; Last Commit: { moment(this.props.repository.pushed_at).format('MMMM D, YYYY') }
             </p>
           </div>
           <div className="repo-body">

@@ -1,11 +1,12 @@
 body {
   /*background-color: #f9f9f9;*/
-  background: #f4f4f4;
+  background: #242626;
   min-height: 100vh;
+  color: #e1e1e1 !important;
 }
 
 a {
-  color: #1157ed;
+  color: #6e9cff !important;
 }
 
 .btn {
@@ -24,4 +25,22 @@ a {
 .btn-primary {
   background: #1157ed;
   border-color: #1157ed;
+}
+
+.top-nav {
+  background: #242626 !important;
+  border-bottom: 1px solid #6a6767 !important;
+}
+
+.list-container {
+  background: #1F2020 !important;
+}
+
+.alert-warning {
+  background: #2a2a19 !important;
+  border-color: #706646 !important;
+}
+
+.list-item-container {
+  border-bottom: 1px solid #5a5a5a !important;
 }

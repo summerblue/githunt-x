@@ -19,6 +19,7 @@ const transformFilters = (filters) => {
 
   transformedFilters.q = reposLanguage + reposDate;
   transformedFilters.sort = 'stars';
+  transformedFilters.per_page = 100;
   transformedFilters.order = 'desc';
 
   return transformedFilters;

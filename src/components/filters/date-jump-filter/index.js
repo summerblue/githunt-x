@@ -29,8 +29,32 @@ class DateJumpFilter extends React.Component {
         return 'Daily';
       case 'month':
         return 'Monthly';
+      case '3-months':
+        return '3 Months';
+      case '2-months':
+        return '2 Months';
+      case '6-months':
+        return '6 Months';
+      case '2-years':
+        return '2 Years';
+      case '10-years':
+        return '10 Years';
+      case '20-years':
+        return '20 Years';
+      case '3-years':
+        return '3 Years';
+      case '5-years':
+        return '5 Years';
       case 'year':
         return 'Yearly';
+      case 'week':
+        return 'Weekly';
+      case 'week':
+        return 'Weekly';
+      case 'week':
+        return 'Weekly';
+      case 'week':
+        return 'Weekly';
       case 'week':
         return 'Weekly';
       default:
@@ -46,7 +70,15 @@ class DateJumpFilter extends React.Component {
           { this.getSelectedDateJump() }
         </DropdownToggle>
         <DropdownMenu>
+          <DropdownItem onClick={ () => this.updateDateJump('20-years') }>20 Years</DropdownItem>
+          <DropdownItem onClick={ () => this.updateDateJump('10-years') }>10 Years</DropdownItem>
+          <DropdownItem onClick={ () => this.updateDateJump('5-years') }>5 Years</DropdownItem>
+          <DropdownItem onClick={ () => this.updateDateJump('3-years') }>3 Years</DropdownItem>
+          <DropdownItem onClick={ () => this.updateDateJump('2-years') }>2 Years</DropdownItem>
           <DropdownItem onClick={ () => this.updateDateJump('year') }>Yearly</DropdownItem>
+          <DropdownItem onClick={ () => this.updateDateJump('6-months') }>6 Months</DropdownItem>
+          <DropdownItem onClick={ () => this.updateDateJump('3-months') }>3 Months</DropdownItem>
+          <DropdownItem onClick={ () => this.updateDateJump('2-months') }>2 Months</DropdownItem>
           <DropdownItem onClick={ () => this.updateDateJump('month') }>Monthly</DropdownItem>
           <DropdownItem onClick={ () => this.updateDateJump('week') }>Weekly</DropdownItem>
           <DropdownItem onClick={ () => this.updateDateJump('day') }>Daily</DropdownItem>

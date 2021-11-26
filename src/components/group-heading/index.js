@@ -62,7 +62,7 @@ class GroupHeading extends React.Component {
 GroupHeading.propTypes = {
   start: PropTypes.string,
   end: PropTypes.string,
-  dateJump: PropTypes.oneOf(['week', 'month', 'year', 'day'])
+  dateJump: PropTypes.oneOf(['week', 'month', 'year', 'day', '2-months', '3-months', '6-months', '2-years', '3-years', '5-years', '10-years', '20-years'])
 };
 
 export default GroupHeading;

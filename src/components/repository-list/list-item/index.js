@@ -22,7 +22,11 @@ class ListItem extends React.Component {
                 { this.props.repository.name }
               </a>
             </h3>
-            <p className="repo-meta text-muted small">Built by &middot; <a href={ this.props.repository.owner.html_url } rel="noopener noreferrer" target="_blank">{ this.props.repository.owner.login }</a> &middot; { moment(this.props.repository.created_at).format('MMMM D YYYY') }</p>
+            <p className="repo-meta text-muted small">Built by &middot; <a href={ this.props.repository.owner.html_url } rel="noopener noreferrer" target="_blank">{ this.props.repository.owner.login }</a> 
+            &middot; { moment(this.props.repository.created_at).format('YYYY-MM-DD') }
+            &middot; Last Commit: { moment(this.props.repository.pushed_at).format('YYYY-MM-DD') }
+            </p>
+            
           </div>
           <div className="repo-body">
             <p>{ this.props.repository.description || 'No description given.' }</p>
