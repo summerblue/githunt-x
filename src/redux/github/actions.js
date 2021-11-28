@@ -17,7 +17,14 @@ const transformFilters = (filters) => {
   const reposDate = `created:${startMoment.format()}..${endMoment.format()}`;
   const reposLanguage = filters.language ? `language:${filters.language} ` : '';
 
-  transformedFilters.q = reposLanguage + reposDate;
+  console.log(filters);
+
+  if (filters.searchTerm) {
+    transformedFilters.q = filters.searchTerm+ " " + reposLanguage + reposDate;
+  } else {
+    transformedFilters.q = reposLanguage + reposDate;
+  }
+
   transformedFilters.sort = 'stars';
   transformedFilters.per_page = 100;
   transformedFilters.order = 'desc';

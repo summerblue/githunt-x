@@ -5,9 +5,19 @@ import LanguageFilter from './language-filter';
 import ViewFilter from './view-filter';
 import './styles.css';
 import DateJumpFilter from './date-jump-filter';
+import SearchTerm from './search-term';
 
 const Filters = (props) => (
   <div className="filters-wrap mt-3 mt-sm-3 mt-md-0 mt-xl-0 mt-lg-0">
+    {/* <div className="filter-item">
+      <input type="text">
+    </div> */}
+    <div className="filter-item">
+      <SearchTerm 
+      updateSearchTerm={ props.updateSearchTerm }
+      inputSearchTerm={ props.inputSearchTerm }
+      />
+    </div>
     <div className="filter-item">
       <LanguageFilter
         selectedLanguage={ props.selectedLanguage }
@@ -33,6 +43,8 @@ Filters.propTypes = {
   updateLanguage: PropTypes.func.isRequired,
   updateViewType: PropTypes.func.isRequired,
   updateDateJump: PropTypes.func.isRequired,
+  updateSearchTerm: PropTypes.func.isRequired,
+  inputSearchTerm: PropTypes.string,
   selectedLanguage: PropTypes.string,
   selectedViewType: PropTypes.string,
   selectedDateJump: PropTypes.string

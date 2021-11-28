@@ -12,7 +12,7 @@ import GroupHeading from '../../components/group-heading';
 import { fetchTrending } from '../../redux/github/actions';
 import RepositoryList from '../../components/repository-list';
 import RepositoryGrid from '../../components/repository-grid';
-import { updateDateJump, updateLanguage, updateViewType } from '../../redux/preference/actions';
+import { updateDateJump, updateLanguage, updateViewType, updateSearchTerm } from '../../redux/preference/actions';
 
 class FeedContainer extends React.Component {
   componentDidMount() {
@@ -36,7 +36,9 @@ class FeedContainer extends React.Component {
     // If language or dateJump has been updated, reload
     // the repositories
     if (currPreferences.language !== prevPreferences.language ||
-      currPreferences.dateJump !== prevPreferences.dateJump) {
+      currPreferences.dateJump !== prevPreferences.dateJump || 
+      currPreferences.searchTerm !== prevPreferences.searchTerm
+      ) {
       this.fetchNextRepositories();
     }
   }
@@ -47,6 +49,10 @@ class FeedContainer extends React.Component {
     filters.dateRange = this.getNextDateRange();
     if (this.props.preference.language) {
       filters.language = this.props.preference.language;
+    }
+
+    if (this.props.preference.searchTerm) {
+      filters.searchTerm = this.props.preference.searchTerm;
     }
 
     if (this.props.preference.options.token) {
@@ -62,8 +68,6 @@ class FeedContainer extends React.Component {
 
     const dateRange = {};
     const lastRecords = repositories[repositories.length - 1];
-
-    console.log(dateJump);
 
     const date_array = dateJump.split('-');
     var date_filter = ''
@@ -183,6 +187,8 @@ class FeedContainer extends React.Component {
                 this.hasRepositories() && <Filters
                   selectedLanguage={ this.props.preference.language }
                   selectedViewType={ this.props.preference.viewType }
+                  inputSearchTerm={ this.props.preference.searchTerm }
+                  updateSearchTerm={ this.props.updateSearchTerm }
                   updateLanguage={ this.props.updateLanguage }
                   updateViewType={ this.props.updateViewType }
                   updateDateJump={ this.props.updateDateJump }
@@ -224,6 +230,8 @@ const mapStateToProps = store => {
 const mapDispatchToProps = {
   updateLanguage,
   updateViewType,
+  updateViewType,
+  updateSearchTerm,
   updateDateJump,
   fetchTrending
 };

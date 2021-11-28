@@ -1,4 +1,4 @@
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE } from './types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM } from './types';
 
 export const updateOptions = function (options) {
   return dispatch => {
@@ -32,6 +32,15 @@ export const updateDateJump = function (dateJump) {
     dispatch({
       type: UPDATE_DATE_TYPE,
       payload: dateJump
+    });
+  };
+};
+
+export const updateSearchTerm = function (searchTerm) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_SEARCH_TERM,
+      payload: searchTerm
     });
   };
 };

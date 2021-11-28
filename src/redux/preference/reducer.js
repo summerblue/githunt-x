@@ -1,4 +1,4 @@
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE } from './types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM } from './types';
 
 const initialState = {
   viewType: 'list',
@@ -25,6 +25,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         viewType: action.payload
+      };
+    case UPDATE_SEARCH_TERM:
+      return {
+        ...state,
+        searchTerm: action.payload
       };
     case UPDATE_LANGUAGE:
       return {

@@ -1,5 +1,5 @@
 import { FETCH_TRENDING_FAILED, FETCH_TRENDING_SUCCESS, PROCESS_FETCH_TRENDING } from './types';
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE } from '../preference/types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_SEARCH_TERM } from '../preference/types';
 
 export const initialState = {
   processing: false,
@@ -22,6 +22,7 @@ export default function reducer(state = initialState, action) {
       };
     case UPDATE_DATE_TYPE:
     case UPDATE_LANGUAGE:
+    case UPDATE_SEARCH_TERM:
       return {
         ...state,
         ...initialState
