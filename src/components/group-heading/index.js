@@ -42,14 +42,13 @@ class GroupHeading extends React.Component {
       return startMoment.format('MMMM D, YYYY');
     }
 
-    return startMoment.format('MMMM D, YYYY') + ' – ' + endMoment.format('MMMM D, YYYY');
+    return startMoment.format('MMMM D, YYYY') + ' – ' + endMoment.format('MMMM D, YYYY') + ' Page ' + parseInt(localStorage.getItem("lastPage"));
   }
 
   render() {
     return (
       <div className="group-heading">
         <h4>
-          <span className="text-capitalizes">{ this.getTitle() }</span>
           <span className="small text-muted ml-2">
             { this.getSubtitle() }
           </span>

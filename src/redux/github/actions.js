@@ -17,8 +17,6 @@ const transformFilters = (filters) => {
   const reposDate = `created:${startMoment.format()}..${endMoment.format()}`;
   const reposLanguage = filters.language ? `language:${filters.language} ` : '';
 
-  console.log(filters);
-
   if (filters.searchTerm) {
     transformedFilters.q = filters.searchTerm+ " " + reposLanguage + reposDate;
   } else {
@@ -27,7 +25,18 @@ const transformFilters = (filters) => {
 
   transformedFilters.sort = 'stars';
   transformedFilters.per_page = 100;
+  transformedFilters.page = 1;
   transformedFilters.order = 'desc';
+
+  // 设置分页
+  if (localStorage.getItem("lastRequest") == transformedFilters.q) {
+    if (localStorage.getItem("lastPage")) {
+      transformedFilters.page = parseInt(localStorage.getItem("lastPage")) + 1;
+    }
+  }
+
+  localStorage.setItem("lastRequest", transformedFilters.q);
+  localStorage.setItem("lastPage", transformedFilters.page);
 
   return transformedFilters;
 };

@@ -20,6 +20,7 @@ class FeedContainer extends React.Component {
 
     // If there are no loaded repositories before, fetch them
     if (existingRepositories.length === 0) {
+      localStorage.setItem("lastPage", 0);
       this.fetchNextRepositories();
     }
   }
@@ -80,13 +81,13 @@ class FeedContainer extends React.Component {
       date_filter = date_array[0]
     }
 
-    if (lastRecords) {
-      dateRange.start = moment(lastRecords.start).subtract(date_count, date_filter).startOf('day');
-      dateRange.end = lastRecords.start;
-    } else {
+    // if (lastRecords) {
+    //   dateRange.start = moment(lastRecords.start).subtract(date_count, date_filter).startOf('day');
+    //   dateRange.end = lastRecords.start;
+    // } else {
       dateRange.start = moment().subtract(date_count, date_filter).startOf('day');
       dateRange.end = moment().startOf('day');
-    }
+    // }
 
     return dateRange;
   }
@@ -209,7 +210,7 @@ class FeedContainer extends React.Component {
                 <button className="btn btn-primary shadow load-next-date"
                         onClick={ () => this.fetchNextRepositories() }>
                   <i className="fa fa-refresh mr-2"></i>
-                  Load next { this.props.preference.dateJump }
+                  Next Page
                 </button>
               )
             }
