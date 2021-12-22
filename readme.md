@@ -1,85 +1,50 @@
 
-## forked 修改如下：
 
-1. 使用夜间模式；
-2. 增加时间过滤列表；
-3. 每页 100 条信息；
-4. 增加 Last Commit 时间；
-5. 关键词过滤；
-6. 下一页功能。
 
-## 如何运行
+## Intro：
 
-1. 安装依赖：
+1. night mod；
+2. add more date filer；
+3. default 100 item per page；
+4. add repo's [Last Commit] time；
+5. search keyword；
+6. next page。
+
+## Manual import
+
+After cloning the project,do the following.
+
+1. Install dependency：
 
 ```
 yarn install
 ```
 
-2. 构建代码
+2. Build the chrome extention
 
 ```
 yarn build-chrome
 ```
 
-会在根目录下生成 build 目录。
+will generate a [build] folder
 
-3. 使用 Chrome 本地加载扩展，选择 build 目录。
+3. Open your Chrome -> extensions -> load unpack extension, choose the [build] folder.
+
+## Development
+
+```
+yarn start
+```
 
 -----
 
-<h1 align="center">
-  	<img height="100" src="https://raw.github.com/kamranahmedse/githunt/master/public/img/logo.svg?sanitize=true" alt="Githunt" /> <br> GitHunt
-</h1>
 
 <p align="center">
-  <a href="https://github.com/kamranahmedse/githunt">
-    <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg" alt="contributions" />
-  </a>
-  <a href="https://chrome.google.com/webstore/detail/githunt/khpcnaokfebphakjgdgpinmglconplhp">
-    <img src="https://img.shields.io/chrome-web-store/v/khpcnaokfebphakjgdgpinmglconplhp.svg" alt="version" />
-  </a>
-  <a href="https://github.com/kamranahmedse/githunt/blob/master/license.md">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="license-mit" />
-  </a>
+    <img src="https://raw.github.com/kamranahmedse/githunt/master/public/img/dark-mod?sanitize=true"  />
+    <img src="https://raw.github.com/kamranahmedse/githunt/master/public/img/time-filter?sanitize=true"  />
 </p>
-
-<p align="center">
-  <b>Hunt the most starred projects on GitHub</b></br>
-  <sub>✨ React app and Chrome Extension to go through the top projects ✨<sub> 
-</p>
-
-<p align="center">
-  <br><b>GitHunt</b> is a react application and<br>a chrome extension that lets you explore
-  <br>the most starred projects on GitHub<br><a href="https://kamranahmed.info/githunt">Use Online</a> • <a href="https://bit.ly/githunt-chrome">Install Extension</a>
-  <br><br><img alt="githunt" src="./.github/list.png">
-  <b>Weekly Trending Projects – List View</b><br>
-  <sub>💥 Keep Scrolling to load past weeks 💥</sub>
-</p>
-
-<p align="center">
-  <img alt="githunt" src="./.github/grid.png">
-  <b>Weekly Trending Projects – Grid View</b><br>
-  <sub>💥 Change the view options from the filters list 💥</sub>
-</p>
-
-<p align="center">
-  <img alt="githunt" src="./.github/lang.png">
-  <b>Filter by Language</b><br>
-  <sub>💥 Will remember your selection of language 💥</sub>
-</p>
-
-
-## Installation
-
-* Use Online – https://kamranahmed.info/githunt
-* Chrome Extension – https://bit.ly/githunt-chrome
-
-## Contributions
-
-* Spread the word
-* Open pull requests
-* Reach out with any feedback [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/kamranahmedse.svg?style=social&label=Follow%20%40kamranahmedse)](https://twitter.com/kamranahmedse)
 
 ## License
+
+MIT © [Summer](https://learnku.com)
 MIT © [Kamran Ahmed](https://kamranahmed.info)
