@@ -3,6 +3,8 @@
 
 ## Intro：
 
+Fork from https://github.com/kamranahmedse/githunt , add features:
+
 1. night mod；
 2. add more date filer；
 3. default 100 item per page；
