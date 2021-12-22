@@ -40,8 +40,8 @@ yarn start
 
 
 <p align="center">
-    <img src="https://raw.github.com/kamranahmedse/githunt/master/public/img/dark-mod?sanitize=true"  />
-    <img src="https://raw.github.com/kamranahmedse/githunt/master/public/img/time-filter?sanitize=true"  />
+    <img src="https://github.com/summerblue/githunt-x/blob/master/public/img/dark-mod.png?raw=true"  />
+    <img src="https://github.com/summerblue/githunt-x/blob/master/public/img/time-filter.png?raw=true"  />
 </p>
 
 ## License
