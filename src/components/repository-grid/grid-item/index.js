@@ -37,13 +37,13 @@ class GridItem extends React.Component {
               </a>
             </h5>
             <p className="repo-meta text-muted small">
-              Built by &middot; <a target="_blank" rel="noopener noreferrer" href={ this.props.repository.owner.html_url }>{ this.props.repository.owner.login }</a> 
+              Built by &middot; <a target="_blank" rel="noopener noreferrer" href={ this.props.repository.owner.html_url }>{ this.props.repository.owner.login }</a>
               &middot; { moment(this.props.repository.created_at).format('MMMM D, YYYY') }
               &middot; Last Commit: { moment(this.props.repository.pushed_at).format('MMMM D, YYYY') }
             </p>
           </div>
           <div className="repo-body">
-            <p>{ (this.props.repository.description && this.props.repository.description.slice(0, 140)) || 'No description given.' }</p>
+          <p title={ this.props.repository.description }>{ (this.props.repository.description && (this.props.repository.description.length > 140 ? this.props.repository.description.slice(0, 140)+"..." : this.props.repository.description)) || 'No description given.' }</p>
           </div>
           <div className="repo-footer">
             {
