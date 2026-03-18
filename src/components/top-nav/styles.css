@@ -1,6 +1,6 @@
 .top-nav {
-  background: #fff;
-  border-bottom: 1px solid #e8e8e8;
+  background: var(--bs-body-bg);
+  border-bottom: 1px solid var(--bs-border-color);
   padding: 15px 0;
   margin-bottom: 35px;
   position: relative;
@@ -24,7 +24,7 @@
 .top-nav .logo-text h4 {
   margin: 3px 0 0;
   font-weight: 700;
-  color: #e1e1e1;
+  color: inherit;
 }
 
 .top-nav .logo-text p {
@@ -35,11 +35,33 @@
   margin-left: 10px;
   margin-top: 24px;
   box-shadow: none;
+  color: var(--bs-secondary-color);
+  border-color: var(--bs-border-color);
 }
 
-.btn-tweet {
-  background: #01aced;
-  border-color: #01aced;
+.top-nav .external-btns .btn:hover {
+  color: var(--bs-body-color);
+  background: var(--bs-tertiary-bg);
+}
+
+.top-nav .external-btns a.btn,
+.top-nav .external-btns a.btn:visited {
+  color: var(--bs-secondary-color);
+}
+
+.top-nav .external-btns a.btn:hover {
+  color: var(--bs-body-color);
+}
+
+.btn-theme-toggle {
+  font-size: 18px;
+  padding: 6px 12px;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .youtube-logo-icon {

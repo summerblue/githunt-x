@@ -4,8 +4,12 @@
 }
 
 .options-container .container {
-  background: white;
+  background: var(--bs-tertiary-bg);
   padding: 25px 30px;
   border-radius: 20px;
-  color: #333 !important;
+  color: var(--bs-body-color);
+}
+
+.options-container a {
+  color: var(--bs-link-color);
 }

@@ -51,6 +51,11 @@
   margin-bottom: 0;
 }
 
-.alert-warning {
-  background: #ffa;
+.theme-dark .alert-warning {
+  background: #2a2a19;
+  border-color: #706646;
+}
+
+.theme-light .alert-warning {
+  background: #fff3cd;
 }

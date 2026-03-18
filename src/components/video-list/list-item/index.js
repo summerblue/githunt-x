@@ -3,8 +3,18 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import './styles.css';
+import { isVisited, markVisited } from '../../../utils/visited';
 
 class VideoListItem extends React.Component {
+  state = {
+    visited: isVisited('yt-' + this.props.video.id)
+  };
+
+  handleClick = () => {
+    markVisited('yt-' + this.props.video.id);
+    this.setState({ visited: true });
+  };
+
   formatDuration(isoDuration) {
     const match = isoDuration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
     if (!match) return '0:00';
@@ -34,10 +44,10 @@ class VideoListItem extends React.Component {
     const channelUrl = `https://www.youtube.com/channel/${video.channelId}`;
 
     return (
-      <div className="col-12 video-list-item-container">
+      <div className={`col-12 video-list-item-container ${this.state.visited ? 'is-visited' : ''}`}>
         <div className="video-list-item-body">
           <div className="video-thumbnail-wrap">
-            <a href={videoUrl} rel="noopener noreferrer" target="_blank">
+            <a href={videoUrl} rel="noopener noreferrer" target="_blank" onClick={this.handleClick}>
               <img
                 className="video-thumbnail"
                 src={video.thumbnail.url}
@@ -49,7 +59,8 @@ class VideoListItem extends React.Component {
           <div className="video-info">
             <div className="video-header">
               <h3>
-                <a href={videoUrl} rel="noopener noreferrer" target="_blank">
+                {this.state.visited && <i className="fa fa-check-circle visited-icon"></i>}
+                <a href={videoUrl} rel="noopener noreferrer" target="_blank" onClick={this.handleClick}>
                   {video.title}
                 </a>
               </h3>

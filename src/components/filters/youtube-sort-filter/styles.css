@@ -3,18 +3,18 @@
 .youtube-sort-type:active {
   border-radius: 8px;
   padding: 10px 20px;
-  background: white !important;
-  color: black !important;
-  border: 1px solid white !important;
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  border: 1px solid var(--bs-border-color);
   cursor: default;
 }
 
 .youtube-sort-wrap .dropdown-menu {
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--bs-border-color);
   box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
   font-size: 15px;
   line-height: 30px;
-  top: 3px !important;
+  top: 3px;
 }
 
 .youtube-sort-wrap .dropdown-menu button {

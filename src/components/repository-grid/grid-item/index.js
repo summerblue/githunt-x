@@ -7,13 +7,23 @@ import './styles.css';
 import Star from '../../icons/star';
 import Fork from '../../icons/fork';
 import Issue from "../../icons/issue";
+import { isVisited, markVisited } from '../../../utils/visited';
 
 class GridItem extends React.Component {
+  state = {
+    visited: isVisited('gh-' + this.props.repository.id)
+  };
+
+  handleClick = () => {
+    markVisited('gh-' + this.props.repository.id);
+    this.setState({ visited: true });
+  };
+
   render() {
     const languageColor = GithubColors.get(this.props.repository.language);
 
     return (
-      <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 grid-item-container">
+      <div className={`col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12 grid-item-container ${this.state.visited ? 'is-visited' : ''}`}>
         <div className="grid-item-body">
           <div className="author-header clearfix">
             <a href={ this.props.repository.owner.html_url } rel="noopener noreferrer" target="_blank">
@@ -32,7 +42,8 @@ class GridItem extends React.Component {
           </div>
           <div className="repo-header">
             <h5>
-              <a href={ this.props.repository.html_url } rel="noopener noreferrer" target="_blank">
+              {this.state.visited && <i className="fa fa-check-circle visited-icon"></i>}
+              <a href={ this.props.repository.html_url } rel="noopener noreferrer" target="_blank" onClick={this.handleClick}>
                 <span className="repo-name">{ this.props.repository.name }</span>
               </a>
             </h5>

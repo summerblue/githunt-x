@@ -8,8 +8,9 @@
   padding: 10px 20px;
   cursor: default;
   display: block;
-  background: white !important;
-  border-color: white !important;
+  background: var(--bs-tertiary-bg);
+  border-color: var(--bs-border-color);
+  color: var(--bs-body-color);
 }
 
 .language-select {
@@ -19,33 +20,33 @@
   margin-top: 5px;
   overflow: hidden;
   font-size: 12px;
-  color: #586069;
-  background-color: #fff;
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
   background-clip: padding-box;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--bs-border-color);
   border-radius: 8px;
   box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
 }
 
 .select-menu-header, .select-menu-divider {
   padding: 12px 10px;
-  background: white;
-  border-bottom: 1px solid #e8e8e8;
+  background: var(--bs-secondary-bg);
+  border-bottom: 1px solid var(--bs-border-color);
   font-size: 15px;
 }
 
 .select-menu-header .select-menu-title, .select-menu-divider {
   font-weight: 600;
-  color: #24292e;
+  color: var(--bs-body-color);
 }
 
 .select-menu-filters {
-  background-color: #f4f4f4;
+  background-color: var(--bs-tertiary-bg);
 }
 
 .select-menu-text-filter {
   padding: 10px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--bs-border-color);
 }
 
 .select-menu-text-filter input {
@@ -53,11 +54,13 @@
   font-size: 14px;
   width: 100%;
   max-width: 100%;
-  border: 1px solid #dfe2e5 !important;
-  padding: 5px 10px !important;
+  border: 1px solid var(--bs-border-color);
+  padding: 5px 10px;
   border-radius: 3px;
-  box-shadow: none !important;
-  outline: none !important;
+  box-shadow: none;
+  outline: none;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
 }
 
 .select-menu-list {
@@ -68,7 +71,7 @@
 
 .select-menu-item {
   text-align: left;
-  background-color: #fff;
+  background-color: var(--bs-body-bg);
   border-top: 0;
   border-right: 0;
   border-left: 0;
@@ -78,7 +81,7 @@
   overflow: hidden;
   color: inherit;
   cursor: pointer;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--bs-border-color);
 }
 
 .select-menu-list .select-menu-item:last-child {

@@ -1,16 +1,6 @@
+/* ── Base ── */
 body {
-  /*background-color: #f9f9f9;*/
-  background: #242626;
   min-height: 100vh;
-  color: #e1e1e1 !important;
-}
-
-a {
-  color: #6e9cff !important;
-}
-
-a:visited {
-  color: #9b7dd4 !important;
 }
 
 .btn {
@@ -19,11 +9,11 @@ a:visited {
 }
 
 .cursor-default {
-  cursor: default !important;
+  cursor: default;
 }
 
 .shadowed {
-  box-shadow: 0 9px 62px -13px rgba(0, 0, 0, 0.20) !important;
+  box-shadow: 0 9px 62px -13px rgba(0, 0, 0, 0.20);
 }
 
 .btn-primary {
@@ -31,24 +21,27 @@ a:visited {
   border-color: #1157ed;
 }
 
-.top-nav {
-  background: #242626 !important;
-  border-bottom: 1px solid #6a6767 !important;
+/* ── Dark theme ── */
+.theme-dark {
+  background: #242626;
+  color: #e1e1e1;
 }
 
-.list-container {
-  background: #1F2020 !important;
-}
-
-.alert-warning {
-  background: #2a2a19 !important;
-  border-color: #706646 !important;
-}
-
-.list-item-container {
-  border-bottom: 1px solid #5a5a5a !important;
-}
-
-.text-muted {
+.theme-dark .text-muted {
   color: #9a9a9a !important;
+}
+
+/* ── Light theme ── */
+.theme-light {
+  background: #f5f6f8;
+  color: #24292e;
+}
+
+/* ── Visited link colors ── */
+a:visited {
+  color: #9b7dd4;
+}
+
+.theme-light a:visited {
+  color: #6f42c1;
 }

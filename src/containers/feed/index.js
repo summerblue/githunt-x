@@ -20,7 +20,7 @@ import SearchTerm from '../../components/filters/search-term';
 import DateJumpFilter from '../../components/filters/date-jump-filter';
 import ViewFilter from '../../components/filters/view-filter';
 import YoutubeSortFilter from '../../components/filters/youtube-sort-filter';
-import { updateDateJump, updateLanguage, updateViewType, updateSearchTerm, updatePlatform, updateYoutubeSort } from '../../redux/preference/actions';
+import { updateDateJump, updateLanguage, updateViewType, updateSearchTerm, updatePlatform, updateYoutubeSort, updateTheme } from '../../redux/preference/actions';
 
 class FeedContainer extends React.Component {
   componentDidMount() {
@@ -365,7 +365,11 @@ class FeedContainer extends React.Component {
           activePlatform={ this.props.preference.activePlatform || 'github' }
           updatePlatform={ this.props.updatePlatform }
         />
-        <TopNav activePlatform={ this.props.preference.activePlatform || 'github' } />
+        <TopNav
+          activePlatform={ this.props.preference.activePlatform || 'github' }
+          theme={ this.props.preference.theme || 'dark' }
+          updateTheme={ this.props.updateTheme }
+        />
 
         { this.renderAlerts() }
 
@@ -390,6 +394,7 @@ const mapDispatchToProps = {
   updateDateJump,
   updatePlatform,
   updateYoutubeSort,
+  updateTheme,
   fetchTrending,
   fetchYouTubeVideos,
 };

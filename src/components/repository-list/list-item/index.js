@@ -7,17 +7,28 @@ import moment from 'moment';
 import Star from '../../icons/star';
 import Fork from '../../icons/fork';
 import Issue from "../../icons/issue";
+import { isVisited, markVisited } from '../../../utils/visited';
 
 class ListItem extends React.Component {
+  state = {
+    visited: isVisited('gh-' + this.props.repository.id)
+  };
+
+  handleClick = () => {
+    markVisited('gh-' + this.props.repository.id);
+    this.setState({ visited: true });
+  };
+
   render() {
     const languageColor = GithubColors.get(this.props.repository.language);
 
     return (
-      <div className="col-12 list-item-container">
+      <div className={`col-12 list-item-container ${this.state.visited ? 'is-visited' : ''}`}>
         <div className="list-item-body">
           <div className="repo-header">
             <h3>
-              <a href={ this.props.repository.html_url } rel="noopener noreferrer" target="_blank">
+              {this.state.visited && <i className="fa fa-check-circle visited-icon"></i>}
+              <a href={ this.props.repository.html_url } rel="noopener noreferrer" target="_blank" onClick={this.handleClick}>
                 <span className="text-normal">{ this.props.repository.owner.login } / </span>
                 { this.props.repository.name }
               </a>

@@ -7,12 +7,18 @@ import Logo from '../icons/logo';
 class TopNav extends React.Component {
   tweet = 'GitHunt – Most starred projects on Github by @kamranahmedse https://github.com/kamranahmedse/githunt';
 
+  toggleTheme = () => {
+    const newTheme = this.props.theme === 'dark' ? 'light' : 'dark';
+    this.props.updateTheme(newTheme);
+  };
+
   render() {
     const isRunningExtension = window.chrome &&
       window.chrome.runtime &&
       window.chrome.runtime.id;
 
     const isYouTube = this.props.activePlatform === 'youtube';
+    const isDark = this.props.theme === 'dark';
 
     return (
       <div className='top-nav'>
@@ -38,16 +44,21 @@ class TopNav extends React.Component {
             </div>
           </a>
           <div className="float-end external-btns">
+            <button className="btn btn-outline-secondary btn-theme-toggle"
+                    onClick={ this.toggleTheme }
+                    title={ isDark ? 'Switch to light mode' : 'Switch to dark mode' }>
+              <i className={ `fa ${isDark ? 'fa-sun-o' : 'fa-moon-o'}` }></i>
+            </button>
             <a href='http://github.com/kamranahmedse/githunt'
                target='_blank'
                rel="noopener noreferrer"
-               className="btn btn-dark"><i className="fa fa-github me-1"></i> View Source</a>
+               className="btn btn-outline-secondary d-none d-sm-none d-md-inline-block d-xl-inline-block d-lg-inline-block"><i className="fa fa-github me-1"></i> View Source</a>
             {
               !isRunningExtension && (
                 <a href='https://goo.gl/e7YP1h'
                    target='_blank'
                    rel="noopener noreferrer"
-                   className="btn btn-danger d-none d-sm-none d-md-inline-block d-xl-inline-block d-lg-inline-block">
+                   className="btn btn-outline-secondary d-none d-sm-none d-md-inline-block d-xl-inline-block d-lg-inline-block">
                   <i className="fa fa-chrome me-1"></i> Use Extension
                 </a>
               )
@@ -57,7 +68,7 @@ class TopNav extends React.Component {
                 <a href='https://twitter.com/kamranahmedse'
                    target='_blank'
                    rel="noopener noreferrer"
-                   className="btn btn-danger d-none d-sm-none d-md-inline-block d-xl-inline-block d-lg-inline-block">
+                   className="btn btn-outline-secondary d-none d-sm-none d-md-inline-block d-xl-inline-block d-lg-inline-block">
                   <i className="fa fa-comment me-1"></i> Give Feedback
                 </a>
               )
@@ -65,7 +76,7 @@ class TopNav extends React.Component {
             <a href={ `https://twitter.com/intent/tweet?text=${this.tweet}` }
                target='_blank'
                rel="noopener noreferrer"
-               className="btn btn-primary btn-tweet d-none d-sm-none d-md-none d-xl-inline-block d-lg-inline-block">
+               className="btn btn-outline-secondary d-none d-sm-none d-md-none d-xl-inline-block d-lg-inline-block">
                 <i className="fa fa-twitter me-1"></i> Tweet
             </a>
           </div>
@@ -76,7 +87,9 @@ class TopNav extends React.Component {
 }
 
 TopNav.propTypes = {
-  activePlatform: PropTypes.string
+  activePlatform: PropTypes.string,
+  theme: PropTypes.string,
+  updateTheme: PropTypes.func,
 };
 
 export default TopNav;

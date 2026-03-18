@@ -1,6 +1,6 @@
 .video-list-item-container {
   padding: 20px 15px;
-  border-bottom: 1px solid #5a5a5a;
+  border-bottom: 1px solid var(--bs-border-color);
 }
 
 .video-list-item-body {
@@ -43,36 +43,54 @@
 }
 
 .video-header h3 a {
-  color: #e1e1e1 !important;
+  color: var(--bs-body-color);
   text-decoration: none;
 }
 
+.video-header h3 a:visited {
+  color: #9b7dd4;
+}
+
 .video-header h3 a:hover {
-  color: #6e9cff !important;
+  color: var(--bs-link-color);
 }
 
 .video-meta a {
-  color: #9a9a9a !important;
+  color: var(--bs-secondary-color);
   text-decoration: none;
 }
 
 .video-meta a:hover {
-  color: #e1e1e1 !important;
+  color: var(--bs-body-color);
 }
 
 .video-body p {
-  color: #9a9a9a;
+  color: var(--bs-secondary-color);
   font-size: 14px;
   margin-bottom: 10px;
 }
 
 .video-footer {
-  color: #9a9a9a;
+  color: var(--bs-secondary-color);
   font-size: 14px;
 }
 
 .video-stat i {
-  color: #6a6a6a;
+  opacity: 0.5;
+}
+
+.visited-icon {
+  color: #52c41a;
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.is-visited .video-header h3 a {
+  color: var(--bs-secondary-color);
+}
+
+.is-visited .video-thumbnail {
+  opacity: 0.6;
 }
 
 @media (max-width: 768px) {

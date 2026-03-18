@@ -1,4 +1,4 @@
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT } from './types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT, UPDATE_THEME } from './types';
 
 export const updateOptions = function (options) {
   return dispatch => {
@@ -59,6 +59,15 @@ export const updateYoutubeSort = function (sortBy) {
     dispatch({
       type: UPDATE_YOUTUBE_SORT,
       payload: sortBy
+    });
+  };
+};
+
+export const updateTheme = function (theme) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_THEME,
+      payload: theme
     });
   };
 };

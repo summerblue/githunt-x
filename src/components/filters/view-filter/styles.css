@@ -1,12 +1,13 @@
 .view-type {
   border-radius: 8px;
   padding: 10px;
-  background: white;
+  background: var(--bs-tertiary-bg);
+  border: 1px solid var(--bs-border-color);
   cursor: default;
 }
 
 .view-type button {
-  color: #ccc;
+  color: var(--bs-secondary-color);
   text-decoration: none;
   margin: 0 0 0 10px;
   padding: 0 5px;
@@ -20,7 +21,7 @@
 }
 
 .view-type button.active, .view-type button:hover {
-  color: #343a40;
+  color: var(--bs-body-color);
 }
 
 .view-type button:first-child {

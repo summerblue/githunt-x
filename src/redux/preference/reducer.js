@@ -1,4 +1,4 @@
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT } from './types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT, UPDATE_THEME } from './types';
 
 const initialState = {
   viewType: 'list',
@@ -6,6 +6,7 @@ const initialState = {
   language: '',
   activePlatform: 'github',
   youtubeSort: 'viewCount',
+  theme: 'dark',
   options: {
     token: '',
     youtubeApiKey: '',
@@ -48,6 +49,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         youtubeSort: action.payload
+      };
+    case UPDATE_THEME:
+      return {
+        ...state,
+        theme: action.payload
       };
     default:
       return state;

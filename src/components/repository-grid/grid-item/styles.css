@@ -4,7 +4,7 @@
 }
 
 .grid-item-body {
-  background: white;
+  background: var(--bs-tertiary-bg);
   padding: 20px;
   border-radius: 10px;
   box-shadow: -5px 10px 60px -13px rgba(0, 0, 0, 0.20);
@@ -27,13 +27,13 @@
 .grid-item-container .author-details h5 {
   margin-bottom: 2px;
   font-weight: 600;
-  color: #6c7583;
+  color: var(--bs-secondary-color);
   font-size: 14px;
   width: 80%;
 }
 
 .grid-item-container .author-details a {
-  color: #6c7583;
+  color: var(--bs-secondary-color);
 }
 
 .grid-item-container .author-details p {
@@ -62,6 +62,10 @@
   text-decoration: none;
 }
 
+.grid-item-container .repo-header a:visited .repo-name {
+  color: #9b7dd4;
+}
+
 .grid-item-container .repo-header .repo-meta a {
   color: currentColor;
   font-weight: 500;
@@ -88,7 +92,7 @@
 .grid-item-container .repo-body p {
   font-size: 14px;
   margin-bottom: 0;
-  color: #6e7583;
+  color: var(--bs-secondary-color);
   word-break: break-word;
 }
 
@@ -98,13 +102,13 @@
   bottom: 20px;
   left: 20px;
   right: 25px;
-  background: white;
+  background: var(--bs-tertiary-bg);
   padding: 10px;
 }
 
 .grid-item-container .repo-footer a {
   text-decoration: none;
-  color: #6c757d;
+  color: var(--bs-secondary-color);
   font-weight: 500;
 }
 
@@ -118,6 +122,16 @@
 .grid-item-container .repo-footer a svg {
   position: relative;
   top: -2px;
-  fill: #6c757d;
+  fill: currentColor;
   margin-right: 5px;
+}
+
+.grid-item-container .visited-icon {
+  color: #52c41a;
+  font-size: 13px;
+  margin-right: 4px;
+}
+
+.grid-item-container.is-visited .repo-header a .repo-name {
+  color: var(--bs-secondary-color);
 }
