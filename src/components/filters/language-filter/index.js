@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import GithubColors  from 'github-colors';
@@ -9,6 +8,7 @@ import languages from './languages';
 
 class LanguageFilter extends React.Component {
   filterInputRef = React.createRef();
+  activeItemRef = React.createRef();
 
   state = {
     filterText: '',
@@ -33,12 +33,7 @@ class LanguageFilter extends React.Component {
   }
 
   ensureSelectedVisible() {
-    const itemComponent = this.refs.activeItem;
-    if (!itemComponent) {
-      return;
-    }
-
-    const domNode = ReactDOM.findDOMNode(itemComponent);
+    const domNode = this.activeItemRef.current;
     if (!domNode) {
       return;
     }
@@ -68,7 +63,7 @@ class LanguageFilter extends React.Component {
       const isSelectedIndex = counter === this.state.selectedIndex;
 
       // This will be used in making sure of the element visibility
-      const refProp = isSelectedIndex ? { ref: 'activeItem' } : {};
+      const refProp = isSelectedIndex ? { ref: this.activeItemRef } : {};
       const languageColor = GithubColors.get(language.title) || {
         color: language.title === 'All Languages' ? 'transparent' : '#e8e8e8'
       };
@@ -179,7 +174,7 @@ class LanguageFilter extends React.Component {
     return (
       <div className='language-filter-wrap'>
         <button onClick={ this.toggleDropdown } className="btn btn-light language-filter shadowed">
-          <i className="fa fa-filter mr-2"></i>
+          <i className="fa fa-filter me-2"></i>
           { this.props.selectedLanguage || 'All Languages' }
         </button>
         { this.state.showDropdown && this.getLanguageDropdown() }

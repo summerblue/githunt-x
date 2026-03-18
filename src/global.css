@@ -44,3 +44,7 @@ a {
 .list-item-container {
   border-bottom: 1px solid #5a5a5a !important;
 }
+
+.text-muted {
+  color: #9a9a9a !important;
+}

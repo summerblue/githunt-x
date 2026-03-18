@@ -49,7 +49,7 @@ class GroupHeading extends React.Component {
     return (
       <div className="group-heading">
         <h4>
-          <span className="small text-muted ml-2">
+          <span className="small text-muted ms-2">
             { this.getSubtitle() }
           </span>
         </h4>

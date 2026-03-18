@@ -66,7 +66,7 @@ class DateJumpFilter extends React.Component {
     return (
       <Dropdown className='date-jump-wrap' isOpen={ this.state.dropdownOpen } toggle={ this.toggle }>
         <DropdownToggle className='date-jump-type shadowed'>
-          <i className="fa fa-calendar mr-2"></i>
+          <i className="fa fa-calendar me-2"></i>
           { this.getSelectedDateJump() }
         </DropdownToggle>
         <DropdownMenu>

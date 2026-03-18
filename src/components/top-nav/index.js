@@ -18,7 +18,7 @@ class TopNav extends React.Component {
           <a href='https://github.com/kamranahmedse/githunt'
              rel="noopener noreferrer"
              target='_blank'
-             className="logo clearfix float-left">
+             className="logo clearfix float-start">
             <Logo/>
             <div className="logo-text">
               <h4>GitHunt</h4>
@@ -26,18 +26,18 @@ class TopNav extends React.Component {
               <p className="text-muted d-inline-block d-sm-none d-md-none d-xl-none d-lg-none">Top Github Projects</p>
             </div>
           </a>
-          <div className="float-right external-btns">
+          <div className="float-end external-btns">
             <a href='http://github.com/kamranahmedse/githunt'
                target='_blank'
                rel="noopener noreferrer"
-               className="btn btn-dark"><i className="fa fa-github mr-1"></i> View Source</a>
+               className="btn btn-dark"><i className="fa fa-github me-1"></i> View Source</a>
             {
               !isRunningExtension && (
                 <a href='https://goo.gl/e7YP1h'
                    target='_blank'
                    rel="noopener noreferrer"
                    className="btn btn-danger d-none d-sm-none d-md-inline-block d-xl-inline-block d-lg-inline-block">
-                  <i className="fa fa-chrome mr-1"></i> Use Extension
+                  <i className="fa fa-chrome me-1"></i> Use Extension
                 </a>
               )
             }
@@ -47,7 +47,7 @@ class TopNav extends React.Component {
                    target='_blank'
                    rel="noopener noreferrer"
                    className="btn btn-danger d-none d-sm-none d-md-inline-block d-xl-inline-block d-lg-inline-block">
-                  <i className="fa fa-comment mr-1"></i> Give Feedback
+                  <i className="fa fa-comment me-1"></i> Give Feedback
                 </a>
               )
             }
@@ -55,7 +55,7 @@ class TopNav extends React.Component {
                target='_blank'
                rel="noopener noreferrer"
                className="btn btn-primary btn-tweet d-none d-sm-none d-md-none d-xl-inline-block d-lg-inline-block">
-              <i className="fa fa-twitter mr-1"></i> Tweet
+              <i className="fa fa-twitter me-1"></i> Tweet
             </a>
           </div>
         </div>

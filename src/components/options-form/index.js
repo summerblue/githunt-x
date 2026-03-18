@@ -49,7 +49,7 @@ class OptionsForm extends React.Component {
           <ul>
             <li>
               Go to the
-              <a href="https://github.com/settings/tokens/new?description=GitHunt&scopes=public_repo" target="_blank" rel="noopener noreferrer"><i className="fa fa-external-link mr-1"></i>Settings <i className="fa fa-angle-right"></i> Personal Access Tokens <i className="fa fa-angle-right"></i> New personal access token</a> of your github profile
+              <a href="https://github.com/settings/tokens/new?description=GitHunt&scopes=public_repo" target="_blank" rel="noopener noreferrer"><i className="fa fa-external-link me-1"></i>Settings <i className="fa fa-angle-right"></i> Personal Access Tokens <i className="fa fa-angle-right"></i> New personal access token</a> of your github profile
             </li>
             <li>Click <span>Generate Token</span>.</li>
             <li>You will be presented with the generated token. Copy the token and add it below</li>
@@ -62,11 +62,11 @@ class OptionsForm extends React.Component {
                  value={ this.state.token }/>
         </div>
         <button className="btn btn-dark btn-lg btn-save shadow" onClick={ this.saveOptions }>
-          <i className="fa fa-cog mr-2"></i>
+          <i className="fa fa-cog me-2"></i>
           Save Token
         </button>
         <Link className='btn btn-primary shadow btn-block btn-lg' to='/'>
-          <i className="fa fa-arrow-left mr-2"></i> Go Home
+          <i className="fa fa-arrow-left me-2"></i> Go Home
         </Link>
 
         {

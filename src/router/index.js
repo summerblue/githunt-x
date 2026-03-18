@@ -1,18 +1,17 @@
 import React from 'react';
-import { MemoryRouter, Route, Switch } from 'react-router-dom';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 import FeedContainer from '../containers/feed';
 import OptionsContainer from '../containers/options';
 
 const AppRoutes = () => {
   return (
-    // @todo use browser router and generate prerendered options.html page for chrome extension
     <MemoryRouter>
-      <Switch>
-        <Route exact path='/' component={ FeedContainer }/>
-        <Route exact path='/options' component={ OptionsContainer }/>
-        <Route component={ FeedContainer }/>
-      </Switch>
+      <Routes>
+        <Route path='/' element={ <FeedContainer/> }/>
+        <Route path='/options' element={ <OptionsContainer/> }/>
+        <Route path='*' element={ <FeedContainer/> }/>
+      </Routes>
     </MemoryRouter>
   );
 };

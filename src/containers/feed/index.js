@@ -96,7 +96,7 @@ class FeedContainer extends React.Component {
     return !this.props.preference.options.token && (
       <Alert type='warning'>
         Make sure to
-        <strong className='ml-1 mr-1'>
+        <strong className='ms-1 me-1'>
           <Link to='/options'>add a token</Link>
         </strong>
         to avoid hitting the rate limit
@@ -209,7 +209,7 @@ class FeedContainer extends React.Component {
               (
                 <button className="btn btn-primary shadow load-next-date"
                         onClick={ () => this.fetchNextRepositories() }>
-                  <i className="fa fa-refresh mr-2"></i>
+                  <i className="fa fa-refresh me-2"></i>
                   Next Page
                 </button>
               )

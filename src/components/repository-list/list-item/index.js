@@ -34,7 +34,7 @@ class ListItem extends React.Component {
           <div className="repo-footer">
             {
               this.props.repository.language && (
-                <span className="d-inline-flex align-items-center mr-3">
+                <span className="d-inline-flex align-items-center me-3">
                   <span className="repo-language-color" style={{
                     backgroundColor: languageColor ? languageColor.color : '#e8e8e8'
                   }}></span>
@@ -44,21 +44,21 @@ class ListItem extends React.Component {
                 </span>
               )
             }
-            <a className="muted-link d-inline-block mr-3"
+            <a className="muted-link d-inline-block me-3"
                href={ `${this.props.repository.html_url}/stargazers` }
                rel="noopener noreferrer"
                target="_blank">
               <Star />
               { this.props.repository.stargazers_count.toLocaleString() }
             </a>
-            <a className="muted-link d-inline-block mr-3"
+            <a className="muted-link d-inline-block me-3"
                href={ `${this.props.repository.html_url}/network/members` }
                rel="noopener noreferrer"
                target="_blank">
               <Fork />
               { this.props.repository.forks ? this.props.repository.forks.toLocaleString() : 0 }
             </a>
-            <a className="muted-link d-inline-block mr-3"
+            <a className="muted-link d-inline-block me-3"
                href={ `${this.props.repository.html_url}/issues` }
                rel="noopener noreferrer"
                target="_blank">
