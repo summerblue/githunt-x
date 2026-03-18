@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './styles.css';
 import Logo from '../icons/logo';
@@ -7,10 +8,11 @@ class TopNav extends React.Component {
   tweet = 'GitHunt – Most starred projects on Github by @kamranahmedse https://github.com/kamranahmedse/githunt';
 
   render() {
-    // We need that to show the extension button only if not running in extension
     const isRunningExtension = window.chrome &&
       window.chrome.runtime &&
       window.chrome.runtime.id;
+
+    const isYouTube = this.props.activePlatform === 'youtube';
 
     return (
       <div className='top-nav'>
@@ -19,11 +21,20 @@ class TopNav extends React.Component {
              rel="noopener noreferrer"
              target='_blank'
              className="logo clearfix float-start">
-            <Logo/>
+            { !isYouTube && <Logo/> }
+            { isYouTube && (
+              <div className="youtube-logo-icon">
+                <i className="fa fa-youtube-play"></i>
+              </div>
+            )}
             <div className="logo-text">
-              <h4>GitHunt</h4>
-              <p className="text-muted d-none d-sm-inline-block d-md-inline-block d-xl-inline-block d-lg-inline-block">Most starred projects on GitHub</p>
-              <p className="text-muted d-inline-block d-sm-none d-md-none d-xl-none d-lg-none">Top Github Projects</p>
+              <h4>{ isYouTube ? 'YouTube' : 'GitHunt' }</h4>
+              <p className="text-muted d-none d-sm-inline-block d-md-inline-block d-xl-inline-block d-lg-inline-block">
+                { isYouTube ? 'Trending videos across YouTube' : 'Most starred projects on GitHub' }
+              </p>
+              <p className="text-muted d-inline-block d-sm-none d-md-none d-xl-none d-lg-none">
+                { isYouTube ? 'Trending Videos' : 'Top Github Projects' }
+              </p>
             </div>
           </a>
           <div className="float-end external-btns">
@@ -55,7 +66,7 @@ class TopNav extends React.Component {
                target='_blank'
                rel="noopener noreferrer"
                className="btn btn-primary btn-tweet d-none d-sm-none d-md-none d-xl-inline-block d-lg-inline-block">
-              <i className="fa fa-twitter me-1"></i> Tweet
+                <i className="fa fa-twitter me-1"></i> Tweet
             </a>
           </div>
         </div>
@@ -63,5 +74,9 @@ class TopNav extends React.Component {
     );
   }
 }
+
+TopNav.propTypes = {
+  activePlatform: PropTypes.string
+};
 
 export default TopNav;

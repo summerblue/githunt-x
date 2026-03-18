@@ -9,6 +9,10 @@ a {
   color: #6e9cff !important;
 }
 
+a:visited {
+  color: #9b7dd4 !important;
+}
+
 .btn {
   font-size: 14px;
   border-radius: 8px;

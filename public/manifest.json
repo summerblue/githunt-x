@@ -8,7 +8,8 @@
     "storage"
   ],
   "host_permissions": [
-    "*://*.github.com/*"
+    "*://*.github.com/*",
+    "*://*.googleapis.com/*"
   ],
   "icons": {
     "16": "/img/icon16.png",

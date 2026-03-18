@@ -1,4 +1,4 @@
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM } from './types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT } from './types';
 
 export const updateOptions = function (options) {
   return dispatch => {
@@ -41,6 +41,24 @@ export const updateSearchTerm = function (searchTerm) {
     dispatch({
       type: UPDATE_SEARCH_TERM,
       payload: searchTerm
+    });
+  };
+};
+
+export const updatePlatform = function (platform) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_PLATFORM,
+      payload: platform
+    });
+  };
+};
+
+export const updateYoutubeSort = function (sortBy) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_YOUTUBE_SORT,
+      payload: sortBy
     });
   };
 };

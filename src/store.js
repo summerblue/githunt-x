@@ -7,7 +7,9 @@ import { thunk } from 'redux-thunk';
 import expireReducer from 'redux-persist-expire';
 
 import GithubTransform from './redux/github/transform';
+import YoutubeTransform from './redux/youtube/transform';
 import githubState from './redux/github/reducer';
+import { initialState as youtubeState } from './redux/youtube/reducer';
 import rootReducer from './redux/reducers';
 
 const persistedReducers = persistReducer(
@@ -17,9 +19,15 @@ const persistedReducers = persistReducer(
     stateReconciler: autoMergeLevel2,
     transforms: [
       GithubTransform,
+      YoutubeTransform,
       expireReducer('github', {
         expireSeconds: 3600,
         expiredState: { ...githubState },
+        autoExpire: true
+      }),
+      expireReducer('youtube', {
+        expireSeconds: 3600,
+        expiredState: { ...youtubeState },
         autoExpire: true
       })
     ]

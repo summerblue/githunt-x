@@ -42,3 +42,17 @@
   border-color: #01aced;
 }
 
+.youtube-logo-icon {
+  float: left;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.youtube-logo-icon i {
+  font-size: 50px;
+  color: #ff0000;
+}
+
