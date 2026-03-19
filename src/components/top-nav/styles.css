@@ -24,7 +24,12 @@
 .top-nav .logo-text h4 {
   margin: 3px 0 0;
   font-weight: 700;
-  color: inherit;
+  color: var(--bs-body-color);
+}
+
+.top-nav a.logo {
+  text-decoration: none;
+  color: var(--bs-body-color);
 }
 
 .top-nav .logo-text p {

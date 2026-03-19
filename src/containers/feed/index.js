@@ -318,12 +318,12 @@ class FeedContainer extends React.Component {
           {
             !this.props.youtube.processing &&
             hasVideos &&
-            this.props.youtube.nextPageToken &&
             (
               <button className="btn btn-primary shadow load-next-date"
-                      onClick={ () => this.fetchYouTubeVideos(this.props.youtube.nextPageToken) }>
+                      onClick={ () => this.fetchYouTubeVideos(this.props.youtube.nextPageToken) }
+                      disabled={ !this.props.youtube.nextPageToken }>
                 <i className="fa fa-refresh me-2"></i>
-                Load More
+                Next Page
               </button>
             )
           }
