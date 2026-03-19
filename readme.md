@@ -60,10 +60,11 @@ Click the settings icon or navigate to the options page to configure:
 
 ## Screenshots
 
-<p align="center">
-    <img src="https://github.com/summerblue/githunt-x/blob/master/public/img/dark-mod.png?raw=true" />
-    <img src="https://github.com/summerblue/githunt-x/blob/master/public/img/time-filter.png?raw=true" />
-</p>
+### GitHunt - Trending GitHub Repositories
+![GitHunt](https://github.com/summerblue/githunt-x/blob/master/public/img/20260319-172612.jpg?raw=true)
+
+### YouTube - Trending Videos
+![YouTube](https://github.com/summerblue/githunt-x/blob/master/public/img/20260319-172607.jpg?raw=true)
 
 ## Tech Stack
 
