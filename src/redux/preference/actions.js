@@ -1,4 +1,4 @@
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT, UPDATE_THEME } from './types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT, UPDATE_THEME, UPDATE_REDDIT_SORT, UPDATE_REDDIT_SUBREDDIT, UPDATE_REDDIT_TIME_FILTER } from './types';
 
 export const updateOptions = function (options) {
   return dispatch => {
@@ -68,6 +68,33 @@ export const updateTheme = function (theme) {
     dispatch({
       type: UPDATE_THEME,
       payload: theme
+    });
+  };
+};
+
+export const updateRedditSort = function (sort) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_REDDIT_SORT,
+      payload: sort
+    });
+  };
+};
+
+export const updateRedditSubreddit = function (subreddit) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_REDDIT_SUBREDDIT,
+      payload: subreddit
+    });
+  };
+};
+
+export const updateRedditTimeFilter = function (timeFilter) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_REDDIT_TIME_FILTER,
+      payload: timeFilter
     });
   };
 };

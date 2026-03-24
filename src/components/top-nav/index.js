@@ -18,6 +18,7 @@ class TopNav extends React.Component {
       window.chrome.runtime.id;
 
     const isYouTube = this.props.activePlatform === 'youtube';
+    const isReddit = this.props.activePlatform === 'reddit';
     const isDark = this.props.theme === 'dark';
 
     return (
@@ -27,19 +28,24 @@ class TopNav extends React.Component {
              rel="noopener noreferrer"
              target='_blank'
              className="logo clearfix float-start">
-            { !isYouTube && <Logo/> }
+            { !isYouTube && !isReddit && <Logo/> }
             { isYouTube && (
               <div className="youtube-logo-icon">
                 <i className="fa fa-youtube-play"></i>
               </div>
             )}
+            { isReddit && (
+              <div className="reddit-logo-icon">
+                <i className="fa fa-reddit-alien"></i>
+              </div>
+            )}
             <div className="logo-text">
-              <h4>{ isYouTube ? 'YouTube' : 'GitHunt' }</h4>
+              <h4>{ isReddit ? 'Reddit' : isYouTube ? 'YouTube' : 'GitHunt' }</h4>
               <p className="text-muted d-none d-sm-inline-block d-md-inline-block d-xl-inline-block d-lg-inline-block">
-                { isYouTube ? 'Trending videos across YouTube' : 'Most starred projects on GitHub' }
+                { isReddit ? 'Browse Reddit posts' : isYouTube ? 'Trending videos across YouTube' : 'Most starred projects on GitHub' }
               </p>
               <p className="text-muted d-inline-block d-sm-none d-md-none d-xl-none d-lg-none">
-                { isYouTube ? 'Trending Videos' : 'Top Github Projects' }
+                { isReddit ? 'Reddit Posts' : isYouTube ? 'Trending Videos' : 'Top Github Projects' }
               </p>
             </div>
           </a>

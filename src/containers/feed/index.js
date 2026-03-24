@@ -12,20 +12,28 @@ import Filters from '../../components/filters';
 import GroupHeading from '../../components/group-heading';
 import { fetchTrending } from '../../redux/github/actions';
 import { fetchYouTubeVideos } from '../../redux/youtube/actions';
+import { fetchRedditPosts } from '../../redux/reddit/actions';
 import RepositoryList from '../../components/repository-list';
 import RepositoryGrid from '../../components/repository-grid';
 import VideoList from '../../components/video-list';
 import VideoGrid from '../../components/video-grid';
+import PostList from '../../components/post-list';
+import PostGrid from '../../components/post-grid';
 import SearchTerm from '../../components/filters/search-term';
 import DateJumpFilter from '../../components/filters/date-jump-filter';
 import ViewFilter from '../../components/filters/view-filter';
 import YoutubeSortFilter from '../../components/filters/youtube-sort-filter';
-import { updateDateJump, updateLanguage, updateViewType, updateSearchTerm, updatePlatform, updateYoutubeSort, updateTheme } from '../../redux/preference/actions';
+import RedditSortFilter from '../../components/filters/reddit-sort-filter';
+import RedditTimeFilter from '../../components/filters/reddit-time-filter';
+import SubredditInput from '../../components/filters/subreddit-input';
+import { updateDateJump, updateLanguage, updateViewType, updateSearchTerm, updatePlatform, updateYoutubeSort, updateTheme, updateRedditSort, updateRedditSubreddit, updateRedditTimeFilter } from '../../redux/preference/actions';
 
 class FeedContainer extends React.Component {
   componentDidMount() {
     if (this.props.preference.activePlatform === 'youtube') {
       this.initYouTube();
+    } else if (this.props.preference.activePlatform === 'reddit') {
+      this.initReddit();
     } else {
       this.initGitHub();
     }
@@ -46,6 +54,36 @@ class FeedContainer extends React.Component {
     }
   }
 
+  initReddit() {
+    const existingPosts = this.props.reddit.posts || [];
+    if (existingPosts.length === 0) {
+      this.fetchRedditPosts();
+    }
+  }
+
+  fetchRedditPosts(after) {
+    const filters = this.getRedditFilters(after);
+    this.props.fetchRedditPosts(filters);
+  }
+
+  getRedditFilters(after) {
+    const filters = {
+      subreddit: this.props.preference.redditSubreddit || 'popular',
+      sort: this.props.preference.redditSort || 'hot',
+      timeFilter: this.props.preference.redditTimeFilter || 'week',
+    };
+
+    if (this.props.preference.searchTerm) {
+      filters.searchTerm = this.props.preference.searchTerm;
+    }
+
+    if (after) {
+      filters.after = after;
+    }
+
+    return filters;
+  }
+
   fetchNextRepositories() {
     const filters = this.getFilters();
     this.props.fetchTrending(filters);
@@ -64,6 +102,8 @@ class FeedContainer extends React.Component {
     if (currPreferences.activePlatform !== prevPreferences.activePlatform) {
       if (currPreferences.activePlatform === 'youtube') {
         this.initYouTube();
+      } else if (currPreferences.activePlatform === 'reddit') {
+        this.initReddit();
       } else {
         this.initGitHub();
       }
@@ -83,6 +123,14 @@ class FeedContainer extends React.Component {
         currPreferences.youtubeSort !== prevPreferences.youtubeSort
       ) {
         this.fetchYouTubeVideos();
+      }
+    } else if (currPreferences.activePlatform === 'reddit') {
+      if (currPreferences.searchTerm !== prevPreferences.searchTerm ||
+        currPreferences.redditSort !== prevPreferences.redditSort ||
+        currPreferences.redditSubreddit !== prevPreferences.redditSubreddit ||
+        currPreferences.redditTimeFilter !== prevPreferences.redditTimeFilter
+      ) {
+        this.fetchRedditPosts();
       }
     }
   }
@@ -147,6 +195,10 @@ class FeedContainer extends React.Component {
   }
 
   renderTokenWarning() {
+    if (this.props.preference.activePlatform === 'reddit') {
+      return null;
+    }
+
     if (this.props.preference.activePlatform === 'youtube') {
       return !this.props.preference.options.youtubeApiKey && (
         <Alert type='warning'>
@@ -171,15 +223,22 @@ class FeedContainer extends React.Component {
   }
 
   renderErrors() {
-    const isYouTube = this.props.preference.activePlatform === 'youtube';
-    const error = isYouTube ? this.props.youtube.error : this.props.github.error;
+    const platform = this.props.preference.activePlatform;
+    let error;
+    if (platform === 'youtube') {
+      error = this.props.youtube.error;
+    } else if (platform === 'reddit') {
+      error = this.props.reddit.error;
+    } else {
+      error = this.props.github.error;
+    }
 
     if (!error) {
       return null;
     }
 
     let message = '';
-    if (!isYouTube) {
+    if (platform === 'github') {
       switch (error.toLowerCase()) {
         case 'bad credentials':
           message = (
@@ -356,24 +415,112 @@ class FeedContainer extends React.Component {
     return <VideoList videos={videos} />;
   }
 
+  renderRedditContent() {
+    const hasPosts = this.props.reddit.posts && this.props.reddit.posts.length > 0;
+    const redditSort = this.props.preference.redditSort || 'hot';
+    const showTimeFilter = redditSort === 'top' || redditSort === 'controversial';
+
+    return (
+      <div className="container mb-5 pb-4">
+        <div className="header-row clearfix">
+          <div className="group-heading">
+            <h4>
+              <span className="small text-muted ms-2">
+                r/{this.props.preference.redditSubreddit || 'popular'}
+                {hasPosts && ` — ${redditSort}`}
+              </span>
+            </h4>
+          </div>
+          <div className="group-filters">
+            <div className="filters-wrap mt-3 mt-sm-3 mt-md-0 mt-xl-0 mt-lg-0">
+              <div className="filter-item">
+                <SubredditInput
+                  updateRedditSubreddit={ this.props.updateRedditSubreddit }
+                  subreddit={ this.props.preference.redditSubreddit }
+                />
+              </div>
+              <div className="filter-item">
+                <SearchTerm
+                  updateSearchTerm={ this.props.updateSearchTerm }
+                  inputSearchTerm={ this.props.preference.searchTerm }
+                />
+              </div>
+              <div className="filter-item">
+                <RedditSortFilter
+                  updateRedditSort={ this.props.updateRedditSort }
+                  selectedSort={ redditSort }
+                />
+              </div>
+              {showTimeFilter && (
+                <div className="filter-item">
+                  <RedditTimeFilter
+                    updateRedditTimeFilter={ this.props.updateRedditTimeFilter }
+                    selectedTime={ this.props.preference.redditTimeFilter || 'week' }
+                  />
+                </div>
+              )}
+              <div className="filter-item d-none d-sm-none d-md-none d-xl-block d-lg-block">
+                <ViewFilter
+                  selectedViewType={ this.props.preference.viewType }
+                  updateViewType={ this.props.updateViewType }
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="body-row">
+          { this.renderPostList() }
+          { this.props.reddit.processing && <Loader/> }
+          {
+            !this.props.reddit.processing &&
+            hasPosts &&
+            (
+              <button className="btn btn-primary shadow load-next-date"
+                      onClick={ () => this.fetchRedditPosts(this.props.reddit.after) }
+                      disabled={ !this.props.reddit.after }>
+                <i className="fa fa-refresh me-2"></i>
+                Next Page
+              </button>
+            )
+          }
+        </div>
+      </div>
+    );
+  }
+
+  renderPostList() {
+    const posts = this.props.reddit.posts || [];
+
+    if (this.props.preference.viewType === 'grid') {
+      return <PostGrid posts={posts} />;
+    }
+
+    return <PostList posts={posts} />;
+  }
+
   render() {
-    const isYouTube = this.props.preference.activePlatform === 'youtube';
+    const platform = this.props.preference.activePlatform;
 
     return (
       <div className="page-wrap">
         <Sidebar
-          activePlatform={ this.props.preference.activePlatform || 'github' }
+          activePlatform={ platform || 'github' }
           updatePlatform={ this.props.updatePlatform }
         />
         <TopNav
-          activePlatform={ this.props.preference.activePlatform || 'github' }
+          activePlatform={ platform || 'github' }
           theme={ this.props.preference.theme || 'dark' }
           updateTheme={ this.props.updateTheme }
         />
 
         { this.renderAlerts() }
 
-        { isYouTube ? this.renderYouTubeContent() : this.renderGitHubContent() }
+        { platform === 'reddit'
+          ? this.renderRedditContent()
+          : platform === 'youtube'
+            ? this.renderYouTubeContent()
+            : this.renderGitHubContent()
+        }
       </div>
     );
   }
@@ -384,6 +531,7 @@ const mapStateToProps = store => {
     preference: store.preference,
     github: store.github,
     youtube: store.youtube,
+    reddit: store.reddit,
   };
 };
 
@@ -394,9 +542,13 @@ const mapDispatchToProps = {
   updateDateJump,
   updatePlatform,
   updateYoutubeSort,
+  updateRedditSort,
+  updateRedditSubreddit,
+  updateRedditTimeFilter,
   updateTheme,
   fetchTrending,
   fetchYouTubeVideos,
+  fetchRedditPosts,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeedContainer);

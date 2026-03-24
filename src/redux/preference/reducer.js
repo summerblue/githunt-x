@@ -1,4 +1,4 @@
-import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT, UPDATE_THEME } from './types';
+import { UPDATE_DATE_TYPE, UPDATE_LANGUAGE, UPDATE_OPTIONS, UPDATE_VIEW_TYPE, UPDATE_SEARCH_TERM, UPDATE_PLATFORM, UPDATE_YOUTUBE_SORT, UPDATE_THEME, UPDATE_REDDIT_SORT, UPDATE_REDDIT_SUBREDDIT, UPDATE_REDDIT_TIME_FILTER } from './types';
 
 const initialState = {
   viewType: 'list',
@@ -6,6 +6,9 @@ const initialState = {
   language: '',
   activePlatform: 'github',
   youtubeSort: 'viewCount',
+  redditSort: 'hot',
+  redditSubreddit: 'popular',
+  redditTimeFilter: 'week',
   theme: 'dark',
   options: {
     token: '',
@@ -54,6 +57,21 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         theme: action.payload
+      };
+    case UPDATE_REDDIT_SORT:
+      return {
+        ...state,
+        redditSort: action.payload
+      };
+    case UPDATE_REDDIT_SUBREDDIT:
+      return {
+        ...state,
+        redditSubreddit: action.payload
+      };
+    case UPDATE_REDDIT_TIME_FILTER:
+      return {
+        ...state,
+        redditTimeFilter: action.payload
       };
     default:
       return state;

@@ -1,0 +1,142 @@
+.post-list-item-container {
+  padding: 15px;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.post-list-item-body {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.post-score-wrap {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+  padding-top: 4px;
+  color: var(--bs-secondary-color);
+  font-size: 13px;
+}
+
+.post-score-wrap i {
+  color: #ff4500;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.post-score {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--bs-body-color);
+}
+
+.post-thumbnail-wrap {
+  flex-shrink: 0;
+}
+
+.post-thumbnail {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.post-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-header h3 {
+  font-size: 17px;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.post-header h3 a {
+  color: var(--bs-body-color);
+  text-decoration: none;
+}
+
+.post-header h3 a:visited {
+  color: #9b7dd4;
+}
+
+.post-header h3 a:hover {
+  color: var(--bs-link-color);
+}
+
+.post-flair {
+  display: inline-block;
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-secondary-color);
+  font-size: 12px;
+  padding: 1px 8px;
+  border-radius: 4px;
+  margin-right: 8px;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+.post-domain {
+  font-weight: 400;
+}
+
+.post-meta a {
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+}
+
+.post-meta a:hover {
+  color: var(--bs-body-color);
+}
+
+.post-body p {
+  color: var(--bs-secondary-color);
+  font-size: 14px;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.post-footer {
+  color: var(--bs-secondary-color);
+  font-size: 13px;
+}
+
+.post-footer a {
+  color: var(--bs-secondary-color);
+  text-decoration: none;
+}
+
+.post-footer a:hover {
+  color: var(--bs-body-color);
+}
+
+.post-stat i {
+  opacity: 0.5;
+}
+
+.visited-icon {
+  color: #52c41a;
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.is-visited .post-header h3 a {
+  color: var(--bs-secondary-color);
+}
+
+.is-visited .post-thumbnail {
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .post-score-wrap {
+    min-width: 40px;
+  }
+
+  .post-thumbnail-wrap {
+    display: none;
+  }
+}

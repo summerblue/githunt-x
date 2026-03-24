@@ -25,6 +25,14 @@ class Sidebar extends React.Component {
           <i className="fa fa-youtube-play"></i>
           <span className="sidebar-label">YouTube</span>
         </div>
+        <div
+          className={`sidebar-item ${activePlatform === 'reddit' ? 'active' : ''}`}
+          onClick={() => updatePlatform('reddit')}
+          title="Reddit"
+        >
+          <i className="fa fa-reddit-alien"></i>
+          <span className="sidebar-label">Reddit</span>
+        </div>
       </div>
     );
   }

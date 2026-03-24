@@ -83,3 +83,17 @@
   color: #ff0000;
 }
 
+.reddit-logo-icon {
+  float: left;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reddit-logo-icon i {
+  font-size: 50px;
+  color: #ff4500;
+}
+

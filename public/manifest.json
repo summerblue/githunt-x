@@ -9,7 +9,8 @@
   ],
   "host_permissions": [
     "*://*.github.com/*",
-    "*://*.googleapis.com/*"
+    "*://*.googleapis.com/*",
+    "*://*.reddit.com/*"
   ],
   "icons": {
     "16": "/img/icon16.png",

@@ -8,8 +8,10 @@ import expireReducer from 'redux-persist-expire';
 
 import GithubTransform from './redux/github/transform';
 import YoutubeTransform from './redux/youtube/transform';
+import RedditTransform from './redux/reddit/transform';
 import githubState from './redux/github/reducer';
 import { initialState as youtubeState } from './redux/youtube/reducer';
+import { initialState as redditState } from './redux/reddit/reducer';
 import rootReducer from './redux/reducers';
 
 const persistedReducers = persistReducer(
@@ -20,6 +22,7 @@ const persistedReducers = persistReducer(
     transforms: [
       GithubTransform,
       YoutubeTransform,
+      RedditTransform,
       expireReducer('github', {
         expireSeconds: 3600,
         expiredState: { ...githubState },
@@ -28,6 +31,11 @@ const persistedReducers = persistReducer(
       expireReducer('youtube', {
         expireSeconds: 3600,
         expiredState: { ...youtubeState },
+        autoExpire: true
+      }),
+      expireReducer('reddit', {
+        expireSeconds: 3600,
+        expiredState: { ...redditState },
         autoExpire: true
       })
     ]
